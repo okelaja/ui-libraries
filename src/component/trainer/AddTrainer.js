@@ -3,10 +3,10 @@ import Layout from "../Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const AddCourse = () => {
+const AddTrainer = () => {
   const [name, setName] = useState("");
-  const [trainerId, setTrainerId] = useState("");
-  const [desc, setDesc] = useState("");
+  const [address, setAddress] = useState("");
+  const [skill, setSkill] = useState("");
   const [file, setFile] = useState("");
   const [preview, setPreview] = useState("");
   const navigate = useNavigate();
@@ -17,13 +17,13 @@ const AddCourse = () => {
     setPreview(URL.createObjectURL(image));
   };
 
-  const saveCourse = async (e) => {
+  const saveTrainer = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://api.sukmax.my.id/course", {
+      await axios.post("https://api.sukmax.my.id/trainer", {
         name: name,
-        trainer_id: trainerId,
-        desc: desc,
+        address: address,
+        skill: skill,
         file: file,
       }, {
         headers: {
@@ -31,7 +31,7 @@ const AddCourse = () => {
         }
       });
 
-      navigate("/table-course"); 
+      navigate("/table-trainer"); 
 
     } catch (error) {
       console.log(error);
@@ -40,40 +40,40 @@ const AddCourse = () => {
   
   return (
     <Layout>
-      <h2 class="title">Courses</h2>
-      <h3 class="subtitle">Add New Course</h3>
+      <h2 class="title">Trainers</h2>
+      <h3 class="subtitle">Add New Trainer</h3>
       
-      <form onSubmit={saveCourse}>
+      <form onSubmit={saveTrainer}>
         <div class="field">
           <label class="label">Name</label>
           <div class="control">
             <input
               class="input"
               type="text"
-              placeholder="Masukkan Nama Course"
+              placeholder="Masukkan nama trainer"
               onChange={(e) => setName(e.target.value)}
             />
           </div>
         </div>
         <div class="field">
-          <label class="label">Trainer id</label>
+          <label class="label">Address</label>
           <div class="control">
             <input
               class="input"
               type="text"
-              placeholder="Masukkan Trainer"
-              onChange={(e) => setTrainerId(e.target.value)}
+              placeholder="Masukkan Address"
+              onChange={(e) => setAddress(e.target.value)}
             />
           </div>
         </div>
         <div class="field">
-          <label class="label">Description</label>
+          <label class="label">Skill</label>
           <div class="control">
-            <textarea
-              class="textarea"
+            <input
+              class="input"
               type="text"
-              placeholder="e.g Desc"
-              onChange={(e) => setDesc(e.target.value)}
+              placeholder="Masukkan Skill"
+              onChange={(e) => setSkill(e.target.value)}
             />
           </div>
         </div>
@@ -115,4 +115,4 @@ const AddCourse = () => {
   );
 };
 
-export default AddCourse;
+export default AddTrainer;
