@@ -8,6 +8,9 @@ import Register from "./component/auth/Register";
 import Detail from "./pages/Detail";
 import Dashboard from "./pages/Dashboard";
 import DetailCourse from "./component/DetailCourse";
+import AddCourse from "./component/course/AddCourse";
+import TableCourse from "./component/course/TableCourse";
+import NotFound from "./component/NotFound";
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/detail" element={<Detail />} />
           <Route path="/course/:id" element={<DetailCourse />} />
+          <Route path="/course/add" element={<AddCourse />} />
+          <Route path="/table-course" element={<TableCourse />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

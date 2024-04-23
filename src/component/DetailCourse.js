@@ -3,16 +3,16 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 
 const DetailCourse = () => {
-  let { id } = useParams();  // add parentheses to call the function
-  const [course, setCourse] = useState({}); // change state to course
+  let { id } = useParams(); 
+  const [course, setCourse] = useState({});
 
   useEffect(() => {
     getCourse();
-  }, [id]); // add id as a dependency
+  }, [id]);
 
   const getCourse = async () => {
     const response = await axios.get(`https://api.sukmax.my.id/course/${id}`);
-    setCourse(response.data); // change setCourses to setCourse
+    setCourse(response.data);
   }
 
   return (
@@ -26,17 +26,11 @@ const DetailCourse = () => {
           </div>
           <div class="column">
             <div class="content">
-              <div class="title is-4 text-dark">{course.name}</div>
-              <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore culpa commodi sint iste ut, eveniet nemo perferendis
-                  minima, distinctio aspernatur dolorum magnam deserunt itaque
-                  similique saepe aliquid, autem porro neque.
-                </p>
-                <p>
+              <div class="title is-3 text-dark">{course.name}</div>
+                <p>{course.desc}</p>
+                {/* <p>
                    <strong className="text-dark">Price : </strong> Rp 1.000.000,-
-                </p>
-                <p>{course.description}</p>  {/* change courses.name to course.description */}
+                </p> */}
                 <div class="field p-5">
                     <button className="button is-primary is-fullwidth has-text-white mb-3"> Add  to Cart</button>  
                     <button className="button is-primary is-outlined is-fullwidth">Buy</button>
