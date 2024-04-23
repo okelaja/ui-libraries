@@ -1,17 +1,16 @@
 import React from "react";
-import TableComponent from "../component/Table";
 import Footer from "../component/Footer";
 import NavbarComponent from "../component/Navbar";
+import CourseCard from "../component/CourseCards";
 
-const TopRated = () => {
+const Course = () => {
   return (
     <div>
       <NavbarComponent />
-      <h1>Top Rated</h1>
-      <TableComponent />
+      <CourseCard />
       <Footer />
     </div>
   );
 };
 
-export default TopRated;
+export default Course;

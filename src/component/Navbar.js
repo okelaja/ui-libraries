@@ -38,13 +38,15 @@ function NavbarComponent(args) {
             </NavLink>
             <NavLink
               className="text-light mx-3"
-              to={"/top"}
+              to={"/courses"}
               style={{ textDecoration: "none" }}
             >
-              Top Rated
+              Course
             </NavLink>
           </Nav>
-          <NavbarText>Ucup</NavbarText>
+          <NavLink to={"/login"}>
+             <button className="button is-light">Login</button>
+          </NavLink>
         </Collapse>
       </Navbar>
     </div>
