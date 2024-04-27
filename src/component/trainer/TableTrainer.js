@@ -16,6 +16,11 @@ const TableTrainer = () => {
     setTrainers(response.data);
   }
 
+  const deleteTrainer = async (id) => {
+    await axios.delete(`https://api.sukmax.my.id/trainer/${id}`);
+    getTrainers();
+  };
+
   return (
     <Layout>
       <h2 class="title">Trainers</h2>
@@ -31,6 +36,7 @@ const TableTrainer = () => {
             <th>Address</th>
             <th>Skill</th>
             <th>Image</th>
+            <th>Action</th>
           </tr>
         </thead>
         {trainers.map((trainer, index) => ( 
@@ -42,6 +48,20 @@ const TableTrainer = () => {
               <td>{trainer.skill}</td>
               <td>
                 <img src={trainer.url} alt={trainer.name} style={{ width: '100px', height:'80px'}} />
+              </td>
+              <td>
+                <Link
+                  className="button is-small is-info mr-2"
+                  to={`/trainer/edit/${trainer.id}`}
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => deleteTrainer(trainer.id)}
+                  className="button is-small is-danger mr-2"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           </tbody>

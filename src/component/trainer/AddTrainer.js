@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Layout from "../Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 const AddTrainer = () => {
   const [name, setName] = useState("");
@@ -42,6 +44,10 @@ const AddTrainer = () => {
     <Layout>
       <h2 class="title">Trainers</h2>
       <h3 class="subtitle">Add New Trainer</h3>
+
+      <div style={{ float: 'right' }}>
+            <Link to={"/table-trainer"}><button class="button is-link is-light mb-4">Back</button></Link>
+      </div>
       
       <form onSubmit={saveTrainer}>
         <div class="field">
